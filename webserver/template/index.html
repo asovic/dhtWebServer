@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+   <head>
+      <title>DHT Sensor data </title>
+      <link rel="stylesheet" href='../static/style.css'/>
+   </head>
+   <body>
+    <h1>Trenutno stanje senzorja: </h1>
+    <h3> TEMPERATURA   ==>  {{ temp  }} °C</h3>
+    <h3> VLAŽNOST (Rel.) ==>  {{ hum  }} %</h3>
+    <hr>
+    <h3> Zadnje stanje: {{ time }} ==> <a href="/"class="button">OSVEŽI</a></h3>
+    <hr>
+    <h3> Graf:</h3>
+    <img src="static/figure.png" alt="Graf" width="640" height="480" />
+    <hr>
+    <p> @2019 ASovic</p>
+   </body>
+</html>
