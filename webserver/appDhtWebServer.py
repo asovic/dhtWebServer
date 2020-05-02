@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import os
+
 app = Flask(__name__)
 import sqlite3
 # Retrieve data from database
@@ -11,15 +13,28 @@ def getData():
         hum = row[2]
     conn.close()
     return time, temp, hum
-# main route 
+
+#Create list of images and return newest
+def getLatest():
+    arr = os.listdir("/home/pi/Desktop/Projekt/dhtWebServer/static/cam")
+    arr.sort()
+    return "static/cam/" + arr[-1]
+
+# main route
 @app.route("/")
-def index():    
+def index():
+    return render_template('index.html')
+
+@app.route("/dhtdata")
+def dhtdata():
+    latest_img = getLatest()
     time, temp, hum = getData()
     templateData = {
         'time': time,
         'temp': temp,
-        'hum': hum
+        'hum': hum,
+        'latest_img':latest_img
     }
-    return render_template('index.html', **templateData)
+    return render_template('dhtdata.html', **templateData)
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=8080, debug=False)
+   app.run(host='0.0.0.0', port=4081, debug=False, threaded=True)
