@@ -1,6 +1,7 @@
 import os
 import time
 
+#Around 3 months of pictures taken every 15 minutes
 FRAMES = 8700
 TIMEBETWEEN = 900
 
