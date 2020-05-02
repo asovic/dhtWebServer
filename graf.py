@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import threading
 
+plt.rcParams.update({'figure.max_open_warning': 0})
+
 def graph_data():
     database = '/home/pi/Desktop/Projekt/sqlite/db/baza.db'
     conn = sqlite3.connect(database)
@@ -58,6 +60,7 @@ def graph_data():
     ax2.legend(loc='lower right', framealpha=0.5)
     
     plt.savefig('/home/pi/Desktop/Projekt/dhtWebServer/static/figure.png')
+    plt.close()
     c.close()
     conn.close()
 
